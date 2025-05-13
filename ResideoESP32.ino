@@ -1,5 +1,5 @@
 #include "HAResideo.h"
-#include <ESP8266WiFi.h>
+#include <WiFi.h>
 #include <ArduinoOTA.h>
 #include "secrets.h"
 #include <DatedVersion.h>
