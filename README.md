@@ -9,16 +9,15 @@ This code is running on an ESP8266 module ESP-12F
 # Dependencies
 Uses the Home Assistant MQTT Library 
 - https://github.com/dawidchyrzynski/arduino-home-assistant
+- https://github.com/hideakitai/PollingTimer
 
 Some helpers
 - https://github.com/Pluimvee/Pluimvee-ArduinoLib/blob/master/src/DatedVersion.h
 - https://github.com/Pluimvee/Pluimvee-ArduinoLib/blob/master/src/Logging.h
 
 # Hardware
-- 4x Honeywell voor €84 (inc. shipment) https://www.ibood.com/nl/s-nl/o/2x-honeywell-resideo-co2-monitor-detector/987304
-- 4x ESP-12F voor €6 (inc. shipment) https://nl.aliexpress.com/item/4001157391459.html
-
-**€23 per unit**
+- Honeywell Resideo R200C2-A https://www.ibood.com/nl/s-nl/o/2x-honeywell-resideo-co2-monitor-detector/987304
+- ESP-32-S2 https://www.aliexpress.com/w/wholesale-esp32-s2.html
 
 ![image](https://github.com/Pluimvee/Resideo/assets/124380379/6a76a810-f088-4fe5-a577-e125a59cacdd)
 
