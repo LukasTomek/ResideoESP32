@@ -9,7 +9,7 @@
 #include <DatedVersion.h>
 DATED_VERSION(0, 1)
 #define DEVICE_NAME  "Resideo"
-#define DEVICE_MODEL "Resideo Mod esp8266"
+#define DEVICE_MODEL "Resideo Mod ESP32"
 #define LED 15
 
 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -43,7 +43,7 @@ HAResideo::HAResideo()
 bool HAResideo::setup(const byte mac[6], HAMqtt *mqtt) 
 {
   setUniqueId(mac, 6); //c:\Users\erikv\OneDrive\Archive\Erik\Hobby\Domotica\Resideo\LICENSE
-  setManufacturer("InnoVeer");
+  setManufacturer("Honeywell");
   setName(DEVICE_NAME);
   setSoftwareVersion(VERSION);
   setModel(DEVICE_MODEL);
