@@ -23,8 +23,8 @@ HAMqtt            mqtt(socket, resideo, SENSOR_COUNT);  // Home Assistant MTTQ
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 // For remote logging the log include needs to be after the global MQTT definition
-#define LOG_REMOTE
-#define LOG_LEVEL 2
+#//define LOG_REMOTE
+#define LOG_LEVEL 3
 #include <Logging.h>
 
 void LOG_CALLBACK(char *msg) { 
@@ -60,6 +60,7 @@ void mqtt_connect() {
 ///////////////////////////////////////////////////////////////////////////////////////
 void setup() 
 {
+  Serial.begin(115200);
   INFO("\nResideo CO2 sensor\n");
   wifi_connect();
   // start MQTT to enable remote logging asap

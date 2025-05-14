@@ -24,8 +24,8 @@ static volatile byte data = 0;        // the byte under construction, which will
 static volatile bool writing = true;  // is the master reading or writing to the device
 
 ////////////////////////////
-#define LOG_REMOTE
-#define LOG_LEVEL 1
+//#define LOG_REMOTE
+#define LOG_LEVEL 3
 #include <Logging.h>
 
 ////////////////////////////
