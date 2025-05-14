@@ -10,8 +10,11 @@
 #include <Arduino.h>
 #include "Sensors.h"
 
-#define PIN_SDA D2 // GPIO4
-#define PIN_SCL D1 // GPIO5
+#define PIN_SDA 39 // GPIO39
+#define PIN_SCL 40 // GPIO40
+
+#define RXD0 3 // GPIO3
+#define TXD0 1 // GPIO1
 
 static volatile byte device_address;
 static volatile byte device_register[256];
@@ -194,7 +197,7 @@ void getCO2PPM()
     uint8_t expectedHeader[] = {0x16, 0x05, 0x01};
     int currentPos = 0;
 
-    int availableBytes = Serial.available();
+    int availableBytes = Serial0.available();
 
     if (availableBytes < NUM_MSG_BYTES) {   // can there be a complete message available?
         return;
@@ -202,14 +205,14 @@ void getCO2PPM()
 
     // We are only interested in the last message, drop all others
     while (availableBytes >= (2*NUM_MSG_BYTES)) {
-        Serial.readBytes(response, NUM_MSG_BYTES);
-        availableBytes = Serial.available();
+        Serial0.readBytes(response, NUM_MSG_BYTES);
+        availableBytes = Serial0.available();
     }
 
     // Find the expected header
     while (currentPos < sizeof(expectedHeader)) {
-        if (Serial.available()) {
-            Serial.readBytes(response+currentPos, 1);
+        if (Serial0.available()) {
+            Serial0.readBytes(response+currentPos, 1);
         } else {
             return;
         }
@@ -220,8 +223,8 @@ void getCO2PPM()
     }
 
     // If present, read the data and checksum
-    if (Serial.available() >= NUM_MSG_BYTES - sizeof(expectedHeader)) {
-        Serial.readBytes(response+currentPos, NUM_MSG_BYTES - sizeof(expectedHeader));
+    if (Serial0.available() >= NUM_MSG_BYTES - sizeof(expectedHeader)) {
+        Serial0.readBytes(response+currentPos, NUM_MSG_BYTES - sizeof(expectedHeader));
     } else {
         ERROR("The last message in the buffer was not complete");
         return;
@@ -241,7 +244,7 @@ void getCO2PPM()
 
 bool CM1106::setup() 
 {
-	Serial.begin(9600);
+	Serial0.begin(9600, SERIAL_8N1, RXD0, TXD0);
   cached_ppm = 0;
   return true;
 }
