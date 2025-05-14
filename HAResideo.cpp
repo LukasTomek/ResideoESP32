@@ -4,12 +4,13 @@
 
 #include "HAResideo.h"
 #include "Sensors.h"
-#include <PolledTimeout.h>
+#include "Timer.h"
 #include <String.h>
 #include <DatedVersion.h>
 DATED_VERSION(0, 1)
 #define DEVICE_NAME  "Resideo"
 #define DEVICE_MODEL "Resideo Mod esp8266"
+#define LED 15
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 //#define LOG_REMOTE
@@ -41,7 +42,7 @@ HAResideo::HAResideo()
 ////////////////////////////////////////////////////////////////////////////////////////////
 bool HAResideo::setup(const byte mac[6], HAMqtt *mqtt) 
 {
-  setUniqueId(mac, 6);c:\Users\erikv\OneDrive\Archive\Erik\Hobby\Domotica\Resideo\LICENSE
+  setUniqueId(mac, 6); //c:\Users\erikv\OneDrive\Archive\Erik\Hobby\Domotica\Resideo\LICENSE
   setManufacturer("InnoVeer");
   setName(DEVICE_NAME);
   setSoftwareVersion(VERSION);
@@ -53,6 +54,9 @@ bool HAResideo::setup(const byte mac[6], HAMqtt *mqtt)
 
   CHT8305::setup();
   CM1106::setup();
+  Timer::setup();
+
+  pinMode(LED, OUTPUT);
 
   return true;
 }
@@ -62,10 +66,11 @@ bool HAResideo::setup(const byte mac[6], HAMqtt *mqtt)
 ////////////////////////////////////////////////////////////////////////////////////////////
 bool HAResideo::loop()
 {
-  using periodic = esp8266::polledTimeout::periodicMs;
-  static periodic nextPing(1000);
+  // If Timer has fired
+  if (xSemaphoreTake(timerSemaphore, 0) == pdTRUE) {
 
-  if (nextPing) {
+    digitalWrite(LED, !digitalRead(LED));
+
     INFO("T:%.1f   H:%.1f   C:%.1u\n", CHT8305::temperature(), CHT8305::humidity(), CM1106::ppm());
 
     resido_temp.setValue(CHT8305::temperature());
