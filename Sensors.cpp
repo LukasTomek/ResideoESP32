@@ -10,11 +10,11 @@
 #include <Arduino.h>
 #include "Sensors.h"
 
-#define PIN_SDA 39 // GPIO39
-#define PIN_SCL 40 // GPIO40
+#define PIN_SDA 9 // GPIO9
+#define PIN_SCL 10 // GPIO10
 
-#define RXD0 3 // GPIO3
-#define TXD0 1 // GPIO1
+#define RXD0 20 // GPIO20
+#define TXD0 21 // GPIO21
 
 static volatile byte device_address;
 static volatile byte device_register[256];

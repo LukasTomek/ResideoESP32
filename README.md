@@ -1,6 +1,6 @@
 # Honeywell Resideo R200C2-A Mod
 Connect your Resideo CO2 monitor to Home Automation via MQTT
-This code is running on an ESP32 module ESP32-S2
+This code is running on an ESP32 module ESP32-C3 https://github.com/sidharthmohannair/Tutorial-ESP32-C3-Super-Mini
 - Reading CO2 ppm via RX
 - Reading Humidity and temperature by sniffing the I2C
 

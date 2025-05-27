@@ -10,7 +10,7 @@ DATED_VERSION(0, 1)
 const char* sta_ssid      = STA_SSID;
 const char* sta_pswd      = STA_PASS;
 
-const char* mqtt_server   = "192.168.0.108";   // test.mosquitto.org"; //"broker.hivemq.com"; //6fee8b3a98cd45019cc100ef11bf505d.s2.eu.hivemq.cloud";
+const char* mqtt_server   = "192.168.0.110";   // test.mosquitto.org"; //"broker.hivemq.com"; //6fee8b3a98cd45019cc100ef11bf505d.s2.eu.hivemq.cloud";
 int         mqtt_port     = 1883;             // 8883;
 const char* mqtt_user     = MQTT_USER;
 const char *mqtt_passwd   = MQTT_PASS;

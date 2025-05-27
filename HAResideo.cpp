@@ -10,7 +10,7 @@
 DATED_VERSION(0, 1)
 #define DEVICE_NAME  "Resideo"
 #define DEVICE_MODEL "Resideo Mod ESP32"
-#define LED 15
+#define LED 8
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 //#define LOG_REMOTE
