@@ -77,7 +77,7 @@ bool HAResideo::loop()
     humidity.setValue(CHT8305::humidity());
     co2_level.setValue(CM1106::ppm());
   }
-  return false;
+  return true;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////
